@@ -3,7 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">
+  <h1 class="text-3xl m-10 font-bold underline">
     Hello world!
   </h1>
 </template>
