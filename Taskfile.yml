@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - go build  main.go
+  swag:
+    cmds:
+      - swag init
+  start:
+    watch: true
+    sources:
+      - '**/*.go'
+    cmds:
+      - go run main.go start
+

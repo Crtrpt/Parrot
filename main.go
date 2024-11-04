@@ -1,10 +1,10 @@
 /*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
+Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 
 */
 package main
 
-import "parrot/cmd"
+import "github.com/parrot/cmd"
 
 func main() {
 	cmd.Execute()

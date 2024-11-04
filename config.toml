@@ -1,0 +1,16 @@
+[api]
+  addr= "127.0.0.1:9090"
+
+
+[feature]
+
+[database]
+dsn="dev:123456789@tcp(127.0.0.1:3306)/parrot?charset=utf8mb4&parseTime=True&loc=Local"
+
+[redis]
+addr="127.0.0.1:6379"
+
+[crontab]
+[crontab.check]
+    name ="check"
+    spec = "@every 60s"

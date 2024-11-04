@@ -4,8 +4,8 @@
         "contact": {}
     },
     "paths": {
-        "/helloworld": {
-            "get": {
+        "/auth/login": {
+            "post": {
                 "description": "do ping",
                 "consumes": [
                     "application/json"
@@ -14,7 +14,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "测试"
+                    "example"
                 ],
                 "summary": "ping example",
                 "responses": {

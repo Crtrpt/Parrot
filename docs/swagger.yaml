@@ -1,8 +1,8 @@
 info:
   contact: {}
 paths:
-  /helloworld:
-    get:
+  /auth/login:
+    post:
       consumes:
       - application/json
       description: do ping
@@ -15,5 +15,5 @@ paths:
             type: string
       summary: ping example
       tags:
-      - 测试
+      - example
 swagger: "2.0"
