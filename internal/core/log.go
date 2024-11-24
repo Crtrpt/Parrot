@@ -99,8 +99,8 @@ func LogMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		startTime := time.Now()
 		guid := xid.New().String()
-		ctx.Set(TrackingId, guid)
-		ctx.Header(TrackingId, guid)
+		ctx.Set(TraceId, guid)
+		ctx.Header(TraceId, guid)
 		ctx.Next()
 		// 结束时间
 		endTime := time.Now()
@@ -123,7 +123,7 @@ func LogMiddleware() gin.HandlerFunc {
 			"client_ip":    clientIP,
 			"req_method":   reqMethod,
 			"req_uri":      reqUri,
-			TrackingId:     guid,
+			TraceId:        guid,
 		}).Info()
 	}
 }

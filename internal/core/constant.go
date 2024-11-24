@@ -1,6 +1,6 @@
 package core
 
-const TrackingId string = "tance_id"
+const TraceId string = "Trace-Id"
 
 const AppDevMode string = "dev"
 const AppProdMode string = "prod"

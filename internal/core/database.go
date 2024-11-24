@@ -39,8 +39,8 @@ func (l *GormLogger) Error(ctx context.Context, msg string, kv ...any) {
 }
 func (l *GormLogger) Trace(ctx context.Context, begin time.Time, fc func() (sql string, rowsAffected int64), err error) {
 	sql, row := fc()
-	tid := ctx.Value(TrackingId)
-	l.log.WithContext(ctx).WithField("row", row).WithField("sql", sql).WithField(TrackingId, tid)
+	tid := ctx.Value(TraceId)
+	l.log.WithContext(ctx).WithField("row", row).WithField("sql", sql).WithField(TraceId, tid)
 }
 
 func initDB() (err error) {
@@ -62,7 +62,7 @@ func initDB() (err error) {
 	prom := prometheus.New(cfg)
 	DB.Use(prom)
 
-	PromethusReg.MustRegister(prom.Collectors...)
+	// PromethusReg.MustRegister(prom.Collectors...)
 
 	return
 }
