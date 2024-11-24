@@ -34,3 +34,15 @@ func Build(data any, err error) (resp *Resp) {
 func (resp *Resp) Flush(ctx *gin.Context) {
 	ctx.JSON(200, resp)
 }
+
+type QueryForm struct {
+	Id   int64  `json:"id,omitempty" form:"id"`
+	Name string `json:"name,omitempty" form:"name"`
+
+	Query  string   `json:"query,omitempty" form:"query"`
+	Sort   string   `json:"sort,omitempty" form:"sort"`
+	Order  string   `json:"order,omitempty" form:"order"`
+	Offset int      `json:"offset,omitempty" form:"offset"`
+	Limit  int      `json:"limit,omitempty" form:"limit"`
+	Fields []string `json:"fields,omitempty" form:"fields"`
+}

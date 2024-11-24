@@ -17,6 +17,7 @@ type Config struct {
 	Database *Database           `json:"database"`
 	Redis    *RedisCfg           `json:"redis"`
 	Log      *LogCfg             `json:"log"`
+	Pprof    *PprofCfg           `json:"pprof"`
 }
 
 func Start(ctx context.Context) (err error) {
@@ -24,6 +25,17 @@ func Start(ctx context.Context) (err error) {
 	if err != nil {
 		return
 	}
+
+	err = initPprof()
+	if err != nil {
+		return
+	}
+
+	err = initPromethus()
+	if err != nil {
+		return
+	}
+
 	err = initLog()
 	if err != nil {
 		return

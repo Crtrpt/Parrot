@@ -2,12 +2,14 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "github.com/parrot/internal/api/v1"
-	"github.com/parrot/internal/api/v1/menu"
+	"github.com/parrot/internal/api/v1/system"
+	"github.com/parrot/internal/api/v1/system/job"
+	"github.com/parrot/internal/api/v1/system/menu"
 )
 
 func InitSystemRouter(r *gin.Engine) {
-	r.GET("/health", v1.Health)
+	r.GET("/health", system.Health)
 
 	r.GET("/api/v1/menu/list", menu.List)
+	r.GET("/api/v1/job/list", job.List)
 }

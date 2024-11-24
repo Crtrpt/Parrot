@@ -19,7 +19,7 @@ import (
 //	@Success		200	{string}	Helloworld
 //	@Router			/mmenu/list [post]
 func List(c *gin.Context) {
-	req := &request.MenuForm{}
+	req := &request.QueryForm{}
 	if err := c.ShouldBindQuery(req); err != nil {
 		request.Build(nil, err).Flush(c)
 		return

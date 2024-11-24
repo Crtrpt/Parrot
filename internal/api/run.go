@@ -13,8 +13,9 @@ var Server *http.Server
 
 func Start(ctx context.Context) (err error) {
 	r := gin.New()
-
-	gin.SetMode(gin.ReleaseMode)
+	if core.Cfg.App.Mode == core.AppProdMode {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	r.Use(gin.Recovery())
 	r.Use(core.LogMiddleware())
 	InitRouter(r)

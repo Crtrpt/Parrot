@@ -1,5 +1,6 @@
 [app]
   name="parrot"
+  mode="dev"
 [api]
   addr= "127.0.0.1:9090"
 
@@ -10,6 +11,9 @@
 
 [redis]
   addr="127.0.0.1:6379"
+
+[pprof]
+  addr="127.0.0.1:9091"
 
 [log]
   level=4

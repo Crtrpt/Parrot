@@ -8,6 +8,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"gorm.io/plugin/prometheus"
 )
 
 type Database struct {
@@ -48,6 +49,20 @@ func initDB() (err error) {
 			log: logrus.StandardLogger(),
 		},
 	})
+
+	// 启用 promethus
+	cfg := prometheus.Config{
+		MetricsCollector: []prometheus.MetricsCollector{
+			&prometheus.MySQL{
+
+				Interval: 5,
+			},
+		},
+	}
+	prom := prometheus.New(cfg)
+	DB.Use(prom)
+
+	PromethusReg.MustRegister(prom.Collectors...)
 
 	return
 }

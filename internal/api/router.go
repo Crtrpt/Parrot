@@ -9,7 +9,7 @@ import (
 func InitRouter(r *gin.Engine) {
 	r.Use(cors.Default())
 	r.Use(gin.Recovery())
-
+	routes.InitPromethusRouter(r)
 	routes.InitStaticRouter(r)
 	routes.InitSwaggerRouter(r)
 	routes.InitSystemRouter(r)

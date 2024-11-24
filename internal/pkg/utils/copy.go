@@ -4,7 +4,7 @@ import (
 	"github.com/jinzhu/copier"
 )
 
-func Copy[D, S any](dst *[]*D, src []*S) (err error) {
+func CopyArray[D, S any](dst *[]*D, src []*S) (err error) {
 	for _, item := range src {
 		t := new(D)
 		err := copier.Copy(t, item)
@@ -15,4 +15,8 @@ func Copy[D, S any](dst *[]*D, src []*S) (err error) {
 		*dst = append(*dst, t)
 	}
 	return nil
+}
+
+func CopyObject[D, S any](dst *D, src *S) (err error) {
+	return copier.Copy(dst, src)
 }

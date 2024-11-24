@@ -12,7 +12,7 @@ import (
 type MenuService struct {
 }
 
-func (menu MenuService) GetMenus(ctx context.Context, req *request.MenuForm) (ret []*request.MenuResp, err error) {
+func (menu MenuService) GetMenus(ctx context.Context, req *request.QueryForm) (ret []*request.MenuResp, err error) {
 	m := model.Menu{}
 	err = core.DB.WithContext(ctx).Model(model.Menu{}).Where("name = ?", req.Name).First(&m).Error
 	if err != nil {
@@ -26,7 +26,7 @@ func (menu MenuService) GetMenus(ctx context.Context, req *request.MenuForm) (re
 	}
 
 	ret = []*request.MenuResp{}
-	err = utils.Copy(&ret, menus)
+	err = utils.CopyArray(&ret, menus)
 
 	return
 }
