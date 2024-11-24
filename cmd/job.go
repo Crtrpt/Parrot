@@ -6,7 +6,7 @@ package cmd
 import (
 	"context"
 
-	"github.com/parrot/internal/host"
+	"github.com/parrot/internal/core"
 	"github.com/parrot/internal/job"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -16,12 +16,7 @@ import (
 var jobCmd = &cobra.Command{
 	Use:   "job",
 	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Long:  `手动运行指定job`,
 	Run: func(cmd *cobra.Command, args []string) {
 		j, err := cmd.Flags().GetString("job")
 		if err != nil {
@@ -30,7 +25,7 @@ to quickly create a Cobra application.`,
 		ctx := context.Background()
 
 		if i, ok := job.Jobs[j]; ok {
-			err := host.Start(ctx)
+			err := core.Start(ctx)
 			if err != nil {
 				panic(err)
 			}
@@ -50,8 +45,4 @@ func init() {
 
 	jobCmd.PersistentFlags().StringP("job", "j", "", "A help for foo")
 	jobCmd.PersistentFlags().StringP("payload", "p", "", "payload argv")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// jobCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

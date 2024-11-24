@@ -1,1 +1,5 @@
 .task/*
+docs/*
+internal/pkg/model
+log/*
+.DS_Store

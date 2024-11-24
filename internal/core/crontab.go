@@ -1,4 +1,4 @@
-package host
+package core
 
 type Crontab struct {
 	Spec string `json:"spec"`

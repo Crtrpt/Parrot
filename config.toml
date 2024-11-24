@@ -1,14 +1,27 @@
+[app]
+  name="parrot"
 [api]
   addr= "127.0.0.1:9090"
-
 
 [feature]
 
 [database]
-dsn="dev:123456789@tcp(127.0.0.1:3306)/parrot?charset=utf8mb4&parseTime=True&loc=Local"
+  dsn="dev:123456789@tcp(127.0.0.1:3306)/parrot?charset=utf8mb4&parseTime=True&loc=Local"
 
 [redis]
-addr="127.0.0.1:6379"
+  addr="127.0.0.1:6379"
+
+[log]
+  level=4
+  caller=true
+  formatter="text"
+  out="file,stdout"
+
+[log.writer.file]
+  dir= "./log"
+[log.writer.stdout]
+  enable=true
+
 
 [crontab]
 [crontab.check]

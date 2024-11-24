@@ -8,7 +8,7 @@ import (
 
 	"github.com/oklog/run"
 	"github.com/parrot/internal/api"
-	"github.com/parrot/internal/host"
+	"github.com/parrot/internal/core"
 	"github.com/parrot/internal/job"
 	"github.com/spf13/cobra"
 )
@@ -20,7 +20,7 @@ var startCmd = &cobra.Command{
 	Long:  `启动服务`,
 	Run: func(cmd *cobra.Command, args []string) {
 		ctx := context.Background()
-		err := host.Start(ctx)
+		err := core.Start(ctx)
 		if err != nil {
 			panic(err)
 		}
@@ -45,14 +45,4 @@ var startCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(startCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// startCmd.PersistentFlags().String("service", "api", "api,crontab")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// startCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

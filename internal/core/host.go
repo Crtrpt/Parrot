@@ -1,4 +1,4 @@
-package host
+package core
 
 import (
 	"context"
@@ -11,10 +11,12 @@ import (
 var Cfg *Config
 
 type Config struct {
+	App      *AppCfg             `json:"app"`
 	Api      *ApiCfg             `json:"api"`
 	Crontab  map[string]*Crontab `json:"crontab"`
 	Database *Database           `json:"database"`
 	Redis    *RedisCfg           `json:"redis"`
+	Log      *LogCfg             `json:"log"`
 }
 
 func Start(ctx context.Context) (err error) {
