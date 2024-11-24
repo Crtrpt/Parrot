@@ -4,6 +4,9 @@ tasks:
   build:
     cmds:
       - go build  main.go
+  build:ui:
+    cmds:
+      - cd ui && pnpm run build
   swag:
     cmds:
       - swag init
@@ -13,4 +16,10 @@ tasks:
       - '**/*.go'
     cmds:
       - go run main.go start
+  start:ui:
+    watch: true
+    sources:
+      - '**/*.go'
+    cmds:
+      - cd ui && pnpm run dev
 
