@@ -1,5 +1,7 @@
 package request
 
+import "encoding/json"
+
 type MenuResp struct {
 	ID       int64       `json:"key"`
 	Name     string      `json:"label"`
@@ -23,4 +25,10 @@ type JobResp struct {
 
 type JobForm struct {
 	Name string `json:"name" form:"name"`
+}
+
+type FormResp struct {
+	ID     int64           `json:"id"`
+	Name   string          `json:"name"`
+	Schema json.RawMessage `json:"schema"`
 }

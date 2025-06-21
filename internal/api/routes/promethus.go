@@ -9,9 +9,7 @@ import (
 )
 
 func InitPromethusRouter(r *gin.Engine) {
-
 	m := ginmetrics.GetMonitor()
-
 	// +optional set slow time, default 5s
 	m.SetSlowTime(10)
 	// +optional set request duration, default {0.1, 0.3, 1.2, 5, 10}

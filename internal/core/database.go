@@ -63,6 +63,5 @@ func initDB() (err error) {
 	DB.Use(prom)
 
 	// PromethusReg.MustRegister(prom.Collectors...)
-
 	return
 }
